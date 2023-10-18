@@ -31,9 +31,9 @@ class PostController extends Controller
 
         // metodo de CREATE mais compacto sem usar save()    
         $post = Post::create([
-            'title' => 'Novo Título',
+            'title' => 'Título do Post',
             'content' => 'Conteúdo do post chat',
-            'author' => 'Autor'
+            'author' => 'Ewerton'
         ]);
     }
 
@@ -51,16 +51,14 @@ class PostController extends Controller
     public function update(Request $request){
         // $post = Post::find(1); //pega um post com base no id
         $posts = Post::where('id', '>',0)->update([
-            'author' => 'Desconhecido'
+            'author' => 'Evinho'
         ]);
-        // $post->title = 'Primeiro Post ATUALIZADO';
-        $posts->save();
-
         return $posts;
 
     }
     public function delete(Request $r){
-        $post = Post::find(7); //recupera postagem com base no id
+        $post = Post::find(5); //recupera postagem com base no id
         $post->delete(); // deleta postagem
+        
     }
 }
