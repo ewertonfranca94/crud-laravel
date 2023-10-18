@@ -57,8 +57,13 @@ class PostController extends Controller
 
     }
     public function delete(Request $r){
-        $post = Post::find(5); //recupera postagem com base no id
+        $post = Post::find(13); //recupera postagem com base no id
         $post->delete(); // deleta postagem
+        
+    }
+    public function deleteAll(Request $r){
+        $post = Post::find(5); //recupera postagem com base no id
+        $post = Post::where('id', '>',0)->delete();
         
     }
 }
