@@ -66,4 +66,23 @@ class PostController extends Controller
         $post = Post::where('id', '>',0)->delete();
         
     }
+
+    public function index(){
+        //recupera registros da tabela posts
+        $posts = Post::all();
+        return view('exibirposts', compact('posts'));
+    }
+    public function createStore(){
+        return view('criarpost');
+    }
+
+    public function store(Request $request) {
+
+        Post::create($request->all());
+        
+        return redirect()->route('exibirposts');
+
+        
+    }
+    
 }
