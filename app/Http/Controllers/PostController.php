@@ -84,5 +84,17 @@ class PostController extends Controller
 
         
     }
+    public function search(Request $r){
+        $searchTerm = $r->input('search');
+        $posts = Post::where('title', 'like', '%' . $searchTerm . '%')
+        ->orWhere('content', 'like', '%' . $searchTerm . '%')
+        ->get();
+
+
+        return view('search_results', compact('posts'));
+    }
     
+    public function welcome(){
+        return view('welcome');
+    }
 }
